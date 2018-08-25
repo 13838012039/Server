@@ -9,26 +9,87 @@
 </head>
 
 <body>
-    <!-- 注释会影响replace，采坑啦！！！！！！！！！！！ -->
-    <!-- <h5>您的账户余额<span id='amount'>amount</span></h5>
-    <button id="button">付款一块钱</button> -->
+
+    <h5>你还有的钱是：<span id="amount">&&&amount&&&</span></h5>
+    <button id='button'>打钱</button>
 
 
-    <form action="./pay" method="post" target="result">
-        <h5>您的账户余额是<span id="amount">&&&amount&&&</span></h5>
 
-        <input type="submit" value="付款">
-    </form>
 
-    <iframe name='result' src="about:blank" frameborder="0" height="200"></iframe>
+    <script>
+        button.addEventListener('click', function(e) {
+            let script = document.createElement('script')
+            script.src = "/pay"
+            document.body.appendChild(script)
+
+            script.onload = function(e) {
+                // debugger
+                // amount.innerText--
+                e.currentTarget.remove()
+            }
+
+
+            script.onerror = function() {
+                alert('fail')
+                x.currentTarget.remove()
+            }
+        })
+    </script>
 </body>
-<!-- <script>
-    button.addEventListener('click', (e) => {
-        let n = amount.innerText
-        let number = parseInt(n, 10)
-        let newNumber = number - 1
-        amount.innerText = newNumber
-    })
-</script> -->
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--111111111 发送图片请求
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h5>您的账户余额<span id='amount'>&&&amount&&&</span></h5>
+    <button id='button'>打钱</button>
+
+
+
+    <script>
+        button.addEventListener('click', (e) => {
+            let image = document.createElement('img')
+            image.src = '/pay'
+            image.onload = function() {
+                alert('打钱成功')
+                    // window.location.reload() //刷新页面
+                amount.innerText-- //局部刷新
+
+
+            }
+            image.onerror = function() {
+                alert('打钱失败')
+            }
+        })
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+
+<!-- 发送javascript请求 -->

@@ -65,18 +65,24 @@ var server = http.createServer(function(request, response) {
     } else if (path === '/js/main.js') {
         var string = fs.readFileSync('./js/main.js', 'utf8')
         response.setHeader('Content-Type', 'application/javascript')
+            // response.setHeader('Content-Type', 'image/png')
         response.write(string)
         response.end()
-    } else if (path === '/pay' && method.toUpperCase() === 'POST') {
+    } else if (path === '/pay') {
         var amount = fs.readFileSync('./db', 'utf8')
         var newAmount = amount - 1
-        if (Math.random() > 0.5) {
-            fs.writeFileSync('./db', newAmount)
-            response.write('success')
 
-        } else {
-            response.write('fail')
-        }
+        fs.writeFileSync('./db', newAmount)
+        response.setHeader('Content-Type', 'application/javascript')
+            // response.setHeader('Content-Type', 'image/jpg')
+        response.statusCode = 200
+        response.write('"{name:liuhuanhuan}";')
+        response.write(`alert("liuhuanhuan")
+        amount.innerText--
+        `)
+
+
+
         response.end()
 
     } else {

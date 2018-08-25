@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 注释会影响replace，采坑啦！！！！！！！！！！！ -->
+    <!-- <h5>您的账户余额<span id='amount'>amount</span></h5>
+    <button id="button">付款一块钱</button> -->
+
+
+    <form action="./pay" method="post" target="result">
+        <h5>您的账户余额是<span id="amount">&&&amount&&&</span></h5>
+
+        <input type="submit" value="付款">
+    </form>
+
+    <iframe name='result' src="about:blank" frameborder="0" height="200"></iframe>
+</body>
+<!-- <script>
+    button.addEventListener('click', (e) => {
+        let n = amount.innerText
+        let number = parseInt(n, 10)
+        let newNumber = number - 1
+        amount.innerText = newNumber
+    })
+</script> -->
+
+</html>

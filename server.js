@@ -10,11 +10,11 @@ if (!port) {
 
 var server = http.createServer(function(request, response) {
     var parsedUrl = url.parse(request.url, true)
-    var path = request.url
-    var query = ''
-    if (path.indexOf('?') >= 0) { query = path.substring(path.indexOf('?')) }
-    var pathNoQuery = parsedUrl.pathname
-    var queryObject = parsedUrl.query
+    var pathWithQuery = request.url
+    var queryString = ''
+    if (pathWithQuery.indexOf('?') >= 0) { queryString = pathWithQuery.substring(pathWithQuery.indexOf('?')) }
+    var path = parsedUrl.pathname
+    var query = parsedUrl.query
     var method = request.method
 
     /******** 从这里开始看，上面不要看 ************/
@@ -74,15 +74,11 @@ var server = http.createServer(function(request, response) {
 
         fs.writeFileSync('./db', newAmount)
         response.setHeader('Content-Type', 'application/javascript')
-            // response.setHeader('Content-Type', 'image/jpg')
+
         response.statusCode = 200
-        response.write('"{name:liuhuanhuan}";')
-        response.write(`alert("liuhuanhuan")
-        amount.innerText--
+        response.write(`
+        ${query.callback}.call(undefined,'success')
         `)
-
-
-
         response.end()
 
     } else {
